@@ -1,25 +1,27 @@
 <h1>Follower Users</h1>
-<% if @users.exists %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>image</th>
-        <th>name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <% @users.each do |user| %>
-        <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
-        <td><%= user.name %></td>
-        <td><span>フォロー数:</span><%= user.followeds.count %></td>
-        <td><span>フォロワー数:</span><%= user.followers.count %></td>
-        <td><%= link_to 'show', user_path(user) %></td>
-        <% end %>
-      </tr>
-<% else %>
-      <p>ユーザーはいません</p>
-    </tbody>
-  </table>
-<% end %> 
+<div class="fllower-users">
+  <% if @users.exists? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @users.each do |user| %>
+          <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+          <td><%= user.name %></td>
+          <td><span>フォロー数:</span><%= user.followings.count %></td>
+          <td><span>フォロワー数:</span><%= user.followers.count %></td>
+          <td><%= link_to 'show', user_path(user) %></td>
+        </tr>
+         <% end %>
+      </tbody>
+    </table>
+  <% else %>
+        <p>ユーザーはいません</p>
+  <% end %>
+</div>

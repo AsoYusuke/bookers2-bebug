@@ -22,6 +22,10 @@ class User < ApplicationRecord
   validates :introduction, presence: false, length: { maximum: 50 }
 
 
+  def following?(another_user)
+    followings.include?(another_user)
+  end
+
   def followed_by?(user)
     relationships.find_by(followed_id: user.id).present?
   end
