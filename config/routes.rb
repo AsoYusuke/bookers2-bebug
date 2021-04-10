@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get 'homes/about' => 'homes#about'
   root to: 'homes#top'
-  devise_for :users
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+  }
+
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get 'followeds' => 'users#followeds', as: 'followeds'
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  
+
   get "search" => "searches#search"
 
 end
