@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   attachment :profile_image, destroy: false
-  has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroyasazsasasd
   has_many :book_comments, dependent: :destroy
 
   #フォローする側のデータを取得
