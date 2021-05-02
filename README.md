@@ -23,3 +23,5 @@ Things you may want to cover:
 
 * ...
 検索機能の追加
+
+フォロー機能の追加
